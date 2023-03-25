@@ -1,0 +1,13 @@
+
+// Displaying the booking list for an already existing purchased plugin, in a specific place on the website
+
+function show_event_bookings_shortcode($atts) {
+    $event_id = $atts['event_id'];
+    $bookings = get_post_meta($event_id, '_tt_booking', true);
+    $output = '';
+    foreach ($bookings as $booking) {
+        $output .= $booking['customer_name'] . "<br>";
+    }
+    return $output;
+}
+add_shortcode('show_event_bookings', 'show_event_bookings_shortcode');
